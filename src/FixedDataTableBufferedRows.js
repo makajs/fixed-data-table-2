@@ -103,6 +103,10 @@ var FixedDataTableBufferedRows = createReactClass({
     if (this.props.isScrolling && !nextProps.isScrolling) {
       this._updateBuffer();
     } else {
+      this._rowBuffer.getRows(
+        nextProps.firstRowIndex,
+        nextProps.firstRowOffset
+      )
       this.setState({
         rowsToRender: this._rowBuffer.getRows(
           nextProps.firstRowIndex,
