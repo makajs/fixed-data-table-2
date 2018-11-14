@@ -1,5 +1,5 @@
 /**
- * FixedDataTable v0.8.15 
+ * FixedDataTable v1.0.1 
  *
  * Copyright Schrodinger, LLC
  * All rights reserved.
@@ -7870,6 +7870,7 @@ var FixedDataTableBufferedRows = (0, _createReactClass2.default)({
     if (this.props.isScrolling && !nextProps.isScrolling) {
       this._updateBuffer();
     } else {
+      this._rowBuffer.getRows(nextProps.firstRowIndex, nextProps.firstRowOffset);
       this.setState({
         rowsToRender: this._rowBuffer.getRows(nextProps.firstRowIndex, nextProps.firstRowOffset)
       });
