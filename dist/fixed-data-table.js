@@ -1,5 +1,5 @@
 /**
- * FixedDataTable v1.0.1 
+ * FixedDataTable v1.0.2 
  *
  * Copyright Schrodinger, LLC
  * All rights reserved.
@@ -8091,6 +8091,7 @@ var FixedDataTableRowBuffer = function () {
       if (rowPosition === null && this._bufferSet.getSize() >= allowedRowsCount) {
         rowPosition = this._bufferSet.replaceFurthestValuePosition(firstViewportRowIndex, lastViewportRowIndex, rowIndex);
       }
+      /*
       if (rowPosition === null) {
         // We can't reuse any of existing positions for this row. We have to
         // create new position
@@ -8100,7 +8101,12 @@ var FixedDataTableRowBuffer = function () {
         // This row already is in the table with rowPosition position or it
         // can replace row that is in that position
         this._rows[rowPosition] = rowIndex;
+      }*/
+      //代码丑化会出现问题
+      if (rowPosition === null) {
+        rowPosition = this._bufferSet.getNewPositionForValue(rowIndex);
       }
+      this._rows[rowPosition] = rowIndex;
     }
   }]);
 

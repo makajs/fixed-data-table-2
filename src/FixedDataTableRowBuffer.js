@@ -127,6 +127,7 @@ class FixedDataTableRowBuffer {
             rowIndex
           );
       }
+      /*
       if (rowPosition === null) {
         // We can't reuse any of existing positions for this row. We have to
         // create new position
@@ -136,7 +137,12 @@ class FixedDataTableRowBuffer {
         // This row already is in the table with rowPosition position or it
         // can replace row that is in that position
         this._rows[rowPosition] = rowIndex;
-      }
+      }*/
+      //代码丑化会出现问题
+      if (rowPosition === null) {
+        rowPosition = this._bufferSet.getNewPositionForValue(rowIndex);
+      } 
+      this._rows[rowPosition] = rowIndex;
   }
 }
 
